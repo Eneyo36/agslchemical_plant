@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("WELCOME TO AMOTOI GLOBAL SERVICES LIMITED")
+st.title("AMOTOI GLOBAL SERVICES LIMITED")
 
 from PIL import Image
 img = Image.open("agsl logo.png")
@@ -23,23 +23,21 @@ chemical_item = {}
 chemical_history =[]
 
 chemical_name = st.text_input("Name of Chemical requested:\n")
-quantity = st.text_input("Quantity requested:\n")
-unit = st.text_input("Unit of Measurement")
+quantity = st.number_input("Quantity requested:\n")
 
 st.text("This is what i ordered")
 confirm_Order = st.checkbox('I agree')
 
 cost = st.number_input("Amount:\n")
-chemical_item = {'name':chemical_name, 'number':(quantity), 'number':(cost)}
+chemical_item = {'name':chemical_name, 'number':(quantity), 'price':(cost)}
 chemical_history.append(chemical_item)
-
-user_input = st.text_input("Would you like to make another requisition?")       
+     
 grand_total = 0
                   
 for index, chemical in enumerate(chemical_history):
-        chemical_total = chemical['number'] * chemical['number']
+        chemical_total = chemical['number'] * chemical['price']
         grand_total = grand_total + chemical_total
-        ('%d %s @ N%.2f Sub_TotalN%.2f' % (chemical['number'], chemical['name'], chemical['number'], chemical_total))
+        ('%d %s @ N%.2f Sub_TotalN%.2f' % (chemical['number'], chemical['name'], chemical['price'], chemical_total))
                    
 chemical_total = 0
         
